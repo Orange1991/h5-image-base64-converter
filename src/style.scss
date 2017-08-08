@@ -1,0 +1,178 @@
+@charset "utf-8"
+
+/**
+ * Scripts used in H5 based converter for image and base64 string
+ * @Author: https://github.com/Orange1991
+ */
+ html, body {
+   padding: 0;
+   margin: 0;
+   width: 100%;
+   height: 100%;
+   font-family: Helvetica, Arial, sans-serif;
+ }
+
+$icon-border-color: #06f;
+$icon-hover-border-color: #30c;
+$normal-border-color: #cdcdcd;
+$font-error-color: #c00;
+$converter-col-order-0: 0;
+$converter-col-order-1: 1;
+$converter-col-order-2: 2;
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 10px;
+  color: #fff;
+  background-color: #003;
+}
+
+section {
+  flex: 1;
+}
+
+.icon {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid $icon-border-color;
+  background-color: transparent;
+
+  &:hover {
+    border-color: $icon-hover-border-color;
+    cursor: pointer;
+  }
+}
+
+.converter-container {
+  display: flex;
+  flex-direction: row;
+
+  .converter-col {
+    .actions-bar {
+      margin-bottom: 10px;
+    }
+  }
+
+  #str-container,
+  #img-container {
+    width: 50%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid $normal-border-color;
+  }
+  #img-container {
+    order: $converter-col-order-0;
+    display: flex;
+    flex-direction: column;
+
+    .b-to-i & {
+      order: $converter-col-order-2;
+
+      .icon-clear,
+      #convert-to-str {
+        display: none;
+      }
+
+      #img-file-label {
+        &:hover {
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    #img-file {
+      display: none;
+    }
+
+    #img-field-container {
+      flex-grow: 1;
+      overflow: hidden;
+
+      #img-field {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  }
+
+  #str-container {
+    order: $converter-col-order-2;
+    display: flex;
+    flex-direction: column;
+
+    .b-to-i & {
+      order: $converter-col-order-0;
+
+      .icon-clear,
+      #convert-to-img {
+        display: inline;
+      }
+    }
+
+    .icon-clear,
+    #convert-to-img {
+      display: none;
+    }
+
+    #cp-result {
+      display: none;
+
+      &.show {
+        display: inline;
+      }
+    }
+
+    textarea {
+      flex-grow: 1;
+      padding: 5px;
+      resize: none;
+    }
+  }
+
+  #arrow-container {
+    flex-grow: 1;
+    order: $converter-col-order-1;
+    align-self: center;
+    text-align: center;
+    &:before {
+      content: '>>';
+      display: inline;
+      font-size: 3em;
+      font-family: monospace;
+    }
+  }
+}
+
+#notification {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  text-align: center;
+  background-color: rgba(0, 0, 0, .3);
+
+  &.show {
+    display: block;
+  }
+
+  .notification-body {
+    display: inline-block;
+    padding: 10px 10px 10px 20px;
+    margin-top: 20px;
+    background-color: #efefef;
+
+    .icon-close {
+      width: 1.5em;
+      height: 1.5em;
+      margin-left: 10px;
+      padding: 0;
+      color: $font-error-color;
+    }
+  }
+}

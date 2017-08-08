@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>H5 based converter for image and base64 string</title>
+    <link rel="stylesheet" href="public/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>IBConverter</h1>
+      <p>IBConverter is short for Image and Base64 String Converter. This is a converter used for image and base64 string to convert one of them to another. It is implemented base on File API of HTML5.</p>
+    </header>
+    <section class="converter-container">
+      <div class="converter-col" id="img-container">
+        <div class="actions-bar">
+          <label class="icon" id="img-file-label">
+            Click to choose a picture...
+            <input type="file" id="img-file" />
+          </label>
+          <button class="icon" id="convert-to-str">Convert</button>
+          <button class="icon-clear icon">Clear</button>
+        </div>
+        <div id="img-field-container">
+          <img id="img-field"/>
+        </div>
+      </div>
+      <div class="converter-col" id="arrow-container">
+        <button class="icon" id="btn-switch">Switch</button>
+      </div>
+      <div class="converter-col" id="str-container">
+        <div class="actions-bar">
+          <button class="icon" id="btn-cp-str">Copy the text</button>
+          <button class="icon" id="convert-to-img">Convert</button>
+          <button class="icon-clear icon">Clear</button>
+          <span id="cp-result">String is already on your clipboard</span>
+        </div>
+        <textarea id="str-field"></textarea>
+      </div>
+    </section>
+    <div id="notification">
+      <div class="notification-body">
+        <span id="notification-content"></span>
+        <button class="icon-close icon">&times;</button>
+      </div>
+    </div>
+    <script src="public/script.js"></script>
+  </body>
+</html>
